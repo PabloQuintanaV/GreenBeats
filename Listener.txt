@@ -1,0 +1,35 @@
+
+The data stream will contain the following information:
+{
+  "tag":12345
+}
+
+Entity type: device
+Event: Event Data Received
+id: defaultaDevice@ExampleUser
+
+If expression:
+context.data.tag==12345
+
+Then expression:
+import com.carriots.sdk.utils.Email;
+import com.carriots.sdk.utils.BasicHttp;
+
+// Send an email to support@carriots.com
+def email = new Email ();
+email.to="<your email>";
+email.subject="RFID reader";
+email.message="RFID reader. Card read: "+context.data.tag;
+email.send();
+
+// Open the door
+def basicHttp = new BasicHttp();
+basicHttp.url ="http://control.entrance:9090/openDoor?token=123456789";
+basicHttp.verb ="GET";
+basicHttp.send();
+
+Else expression:
+def basicHttp = new BasicHttp();
+basicHttp.url ="http://control.entrance:9090/openDoor?token=123456789";
+basicHttp.verb ="GET";
+basicHttp.send();
