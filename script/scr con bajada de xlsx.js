@@ -3,7 +3,7 @@
 var tiempo = []; 
 var valor = [];
 var largo = 0;
-document.getElementById("Descargar").disabled = true;
+//document.getElementById("Descargar").disabled = true;
   
 if(sessionStorage.myValuex !== "valuex") Salir();
 /*
@@ -119,7 +119,7 @@ function makeCorsRequest(meth, url, timePeriod) {
   //device = 'Pt100_arduino@pquintan.pquintan';
   //device = "Pt100_arduino"; //device:Pt100_arduino@pquintan.pquintan
 
-  if (!xhr) {
+  if (xhr) {
     alert('CORS not supported');
     return;
   }
@@ -337,11 +337,18 @@ function t(date){
     newDate.setHours(hours - offset);
     return newDate;
 }
-	   
+	
+
+function Descargar() {
+	generateBlob();
+}
+	
 	   
 function getWorkbook() {
         return XlsxPopulate.fromBlankAsync();
 }
+
+
 
 function generate(type) {
         return getWorkbook()
@@ -351,8 +358,8 @@ function generate(type) {
 				workbook.sheet("Sheet1").cell( "B2" ).value("Medición Temperatura Cámara de Frio Green Beats").style({ fontColor: "0563c1","horizontalAlignment":'left',"border":false,"bold":true});
                 workbook.sheet(0).cell("E1").value( fecha ).style({"fontColor":"000000","bold":true});
 				
-				workbook.sheet(0).cell("B5").value( "Fecha" ).style( {"fontColor":"000000","bold":true, "horizontalAlignment":'center',"fill": "FFFF00"} );
-				workbook.sheet(0).cell("C5").value( "T°C"   ).style( {"fontColor":"000000","bold":true, "horizontalAlignment":'center',"fill": "FFFF00"} );
+				workbook.sheet(0).cell("B5").value( "T°C" ).style( {"fontColor":"000000","bold":true, "horizontalAlignment":'center',"fill": "FFFF00"} );
+				workbook.sheet(0).cell("C5").value( "Fecha"   ).style( {"fontColor":"000000","bold":true, "horizontalAlignment":'center',"fill": "FFFF00"} );
 				
 				for(i=0; i<largo; i++){
 					ind = i + 6;

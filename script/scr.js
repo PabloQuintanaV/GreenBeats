@@ -1,14 +1,6 @@
-
-
 	 
 	
 if(sessionStorage.myValuex !== "valuex") Salir();
-var f = "dsf dsfdsds";
-var miBlob = new Blob([f], {type: 'text/plain'});
-window.open(URL.createObjectURL(miBlob));
-
-
-
 /*
 $(document).ready(function(){
     var ua = navigator.userAgent;
@@ -53,8 +45,8 @@ if(isEdge) {console.log("Edge");document.getElementById("browser").innerHTML = "
 var isChrome = !!window.chrome && !!window.chrome.webstore;
 if(isChrome) { 
 	console.log("Chrome"); 
-	// document.getElementById("browser").innerHTML = "Chrome"; 
-}
+	  document.getElementById("browser").innerHTML = "Chrome";
+	 }
 // Blink engine detection
 //var isBlink = (isChrome || isOpera) && !!window.CSS;
 // if(isBlink) {console.log("Blink");document.getElementById("browser").innerHTML = "Blink"; }
@@ -121,7 +113,7 @@ function makeCorsRequest(meth, url, timePeriod) {
   //device = 'Pt100_arduino@pquintan.pquintan';
   //device = "Pt100_arduino"; //device:Pt100_arduino@pquintan.pquintan
 
-  if (xhr) {
+  if (!xhr) {
     alert('CORS not supported');
     return;
   }
